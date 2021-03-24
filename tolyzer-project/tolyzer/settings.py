@@ -20,12 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^@u7gn#=gew&=qklt87=ug2i^_tdc%r4vk^6sx8s6pi==df@=y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -127,3 +125,8 @@ STATIC_DIRS
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL='/media/'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
