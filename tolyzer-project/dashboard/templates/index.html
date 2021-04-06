@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="main-section">
+    <div class="main-header" style="text-align: center;">
+        <div class="hero-text-container">
+            <h1 id="ht" class="hero-text"></h1>
+        </div>
+        <div class="hero-image-container mr-auto ml-auto" style="width: 50%; text-align: center;">
+            <img class = "hero-image" src= "{% static 'resources/img/g2.webp' %}" height="600px">
+        </div>
+        <div class="hero-button-container">
+            <hr class="line">
+            <button class="hero-button js--scroll-to-upload">Analyze</button>
+        </div>
+    </div>
+</section>
+
+<section class="upload-section js--section-upload">
+    <div class="input-container">
+        <div class="form-container">
+            <h4>Upload Your Network File</h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h5>Network File</h5>
+                <b>{{ form.network }}</b>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

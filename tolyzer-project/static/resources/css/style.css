@@ -1,0 +1,153 @@
+:root{
+    --theme-Color: #10febd;
+    --theme-Color-2: #7270fe;
+    --theme-Color-3: #1d92fd;
+    --theme-border: 2px solid #10febd;
+}
+*{
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+nav{
+    border-bottom: var(--theme-border);
+}
+nav li:hover {
+    border-top: var(--theme-border);
+}
+.main-container{
+    background-image: linear-gradient(rgb(0, 0, 0, 0.2),rgb(0, 0, 0, 0.2)), url(img/bg-5.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    min-height: 100vh
+}
+h4{
+    background-color: black;
+    width: 40%;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+h4::after{
+    display: block;
+    height: 2px;
+    background-color:var(--theme-Color-2);
+    content: " ";
+    width: 100px;
+    margin:0 auto;
+    margin-top: 20px;
+}
+.main-section{
+    min-height: 100vh;
+}
+
+.hero-image-container{
+    margin-top: -70px;
+    margin-bottom: -30px;
+}
+.hero-text-container{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 0;
+}
+
+.hero-text{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.hero-button-container{
+    margin-top: 50px;
+    height: 150px;
+}
+.hero-button{
+    position: relative;
+    top: -40px;
+    z-index: 1;
+    width: 160px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border:solid 2px black;
+    font-weight: bold;
+    color: black;
+    background-color: var(--theme-Color);
+    border-radius: 20px;
+    animation-name: button_animation;
+    animation-duration: 3s;
+    animation-timing-function: steps(1);
+    transition: transform 1s;
+}
+
+.hero-button:hover{
+    transform: scale(1.2);
+}
+
+.upload-section{
+    height: 100vh;
+    padding: 50px;
+    background-image: linear-gradient(var(--theme-Color), var(--theme-Color-3), var(--theme-Color-2));
+}
+.input-container{
+    height: 80%;
+    background-color: black;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 80%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 20px;
+}
+input {
+    background-color: black;
+}
+
+.form-container{
+    height: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    border: var(--theme-border);
+}
+
+.line {
+    z-index: -1;
+    border-bottom: solid 3px var(--theme-Color);
+    border-radius: 5px;
+    width: 70%;
+    border-bottom-width: 6px;
+    height: 10px;
+    border-top-width: 0px;
+    animation-name: line_animation;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+}
+
+@keyframes line_animation {
+    from {
+        width: 0%;
+        border-color: var(--theme-Color-2);
+    }
+    to {
+        width:70%;
+        border-color: var(--theme-Color);
+    }
+}
+
+@keyframes button_animation {
+    0% {
+        opacity:0;
+        transform: scale(0);
+        background-color: var(--theme-Color-2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        background-color: var(--theme-Color);
+    }
+}
+
+@keyframes border_animation {
+
+}
