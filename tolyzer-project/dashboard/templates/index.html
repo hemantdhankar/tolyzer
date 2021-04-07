@@ -18,14 +18,18 @@
 
 <section class="upload-section js--section-upload">
     <div class="input-container">
-        <div class="form-container">
-            <h4>Upload Your Network File</h4>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h5>Network File</h5>
-                <b>{{ form.network }}</b>
-                <input type="submit" value="Submit">
-            </form>
+        <div class="input-box">
+            <h4 class="ml-auto mr-auto">Upload Your Network File</h4>
+            <img class="upload-image" src="{% static 'resources/img/upload-2.png' %}" height="140px" >
+            <div class="form-container">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {{ form.network }}<b> You can upload .gml or .csv file </b>
+                    <br>
+                    <input class="normal-button" type="submit" value="Submit">
+                </form>
+            </div>
         </div>
     </div>
 </section>

@@ -97,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CELERY_BROKER_URL = 'amqp://localhost'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

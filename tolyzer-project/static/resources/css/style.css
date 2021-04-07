@@ -22,22 +22,11 @@ nav li:hover {
     min-height: 100vh
 }
 h4{
-    background-color: black;
     width: 40%;
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 50px;
 }
-h4::after{
-    display: block;
-    height: 2px;
-    background-color:var(--theme-Color-2);
-    content: " ";
-    width: 100px;
-    margin:0 auto;
-    margin-top: 20px;
-}
+
 .main-section{
     min-height: 100vh;
 }
@@ -61,6 +50,25 @@ h4::after{
     margin-top: 50px;
     height: 150px;
 }
+
+.normal-button {
+    margin-top: 50px;
+    z-index: 1;
+    width: 160px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border:solid 2px black;
+    font-weight: bold;
+    color: black;
+    background-color: var(--theme-Color);
+    border-radius: 20px;
+}
+
+.normal-button:hover{
+    transform: scale(1.1);
+    background-color: var(--theme-Color-3);
+}
 .hero-button{
     position: relative;
     top: -40px;
@@ -77,26 +85,27 @@ h4::after{
     animation-name: button_animation;
     animation-duration: 3s;
     animation-timing-function: steps(1);
-    transition: transform 1s;
+    transition: transform 0.3s;
 }
 
 .hero-button:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
+    background-color: var(--theme-Color-3);
 }
 
 .upload-section{
     height: 100vh;
     padding: 50px;
+    text-align: center;
     background-image: linear-gradient(var(--theme-Color), var(--theme-Color-3), var(--theme-Color-2));
 }
 .input-container{
-    height: 80%;
     background-color: black;
     margin-left:auto;
     margin-right: auto;
-    margin-top: 5%;
+    margin-top: 4%;
     width: 80%;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     border-radius: 20px;
 }
@@ -104,21 +113,71 @@ input {
     background-color: black;
 }
 
-.form-container{
+.input-box{
     height: 100%;
     padding: 50px;
     border-radius: 20px;
     border: var(--theme-border);
 }
 
+.upload-image{
+    margin-left: 20px;
+    animation: zoominoutsinglefeatured 3s infinite ;
+}
+
+
+.form-container{
+    margin-top: 30px;
+    padding: 30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px var(--theme-Color-3);
+    border-radius: 20px;
+}
+
+.submission-section{
+    padding: 50px;
+    text-align: center;
+}
+
+.submission-container{
+    width: 80%;
+    margin-top: 2%;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-image: linear-gradient(var(--theme-Color), var(--theme-Color-3), var(--theme-Color-2));
+}
+
+.submission-container h4{
+    color: black;
+    font-weight: 700;
+}
+
+.submission-container h6{
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+.submission-box{
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 50px;
+    border: solid 2px black;
+}
+
 .line {
     z-index: -1;
     border-bottom: solid 3px var(--theme-Color);
+    border-top: solid 3px var(--theme-Color);
     border-radius: 5px;
     width: 70%;
-    border-bottom-width: 6px;
-    height: 10px;
-    border-top-width: 0px;
+    border-bottom-width: 3px;
+    height: 0px;
+    border-top-width: 3px;
     animation-name: line_animation;
     animation-duration: 3s;
     animation-timing-function: linear; 
@@ -148,6 +207,14 @@ input {
     }
 }
 
-@keyframes border_animation {
-
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
 }

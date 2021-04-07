@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="submission-section">
+    <div class="submission-container">
+        <div class="submission-box">
+            <h4 class="mr-auto ml-auto">Submission Successfull</h4>
+            <div>
+                <br>
+                <img class="upload-image" src="{% static 'resources/img/s3.gif' %}" height="200px" >
+                <br>
+                <br>
+            </div>
+            <br>
+            <br><h6>Please wait while we are Analyzing your Network. You will be automatically redirected to result page... </h6></br>
+        </div>
+    </div>
+</section>
+{% endblock %}
