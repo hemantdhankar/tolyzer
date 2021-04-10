@@ -2,39 +2,47 @@ from django.shortcuts import render, redirect
 from .functions import *
 from .forms import *
 from .tasks import *
+from .models import *
 import time
 import threading
 from threading import Thread
-
+from multiprocessing import Process
 # Create your views here.
 def home(request):
     dataToPass = {}
     print("HI")
     if request.POST:
-        dataToPass['form'] = uploadFile(request.POST, request.FILES)
+        form = uploadFile(request.POST, request.FILES)
+        dataToPass['form'] = form
+        
         if(dataToPass['form'].is_valid()):
-            handle_uploaded_file(request.FILES['network'])
-        return redirect('submission/'+request.FILES['network'].name)
+            task = Submission()
+            task.uploaded_file = request.FILES['network']
+            task.status = False
+            task.save()
+        
+        task_id = task.submission_id
+        filename = request.FILES['network'].name
+
+        process(task_id)
+        
+        return redirect('submission/'+str(task_id))        
     else:
         dataToPass['form'] = uploadFile(auto_id=False)
         return render(request, "index.html", dataToPass)
 
 
-def submission(request, filename):
-    print("before")
-    print(filename)
+def submission(request, task_id):
+        if request.POST:
+            obj = Submission.objects.get(submission_id = task_id)
+            print(obj.status)
+            if(obj.status == False):
+                return render(request,"submission.html")
+            else:
+                return redirect(result)
+        else:
+            return render(request, "submission.html")
     
-    #func1_thread = Thread(target = process)
     
-    #while func1_thread.isAlive():
-        #render(request, "submission.html")
-    time.sleep(5)
-    
-    return redirect(result)
-    #process.delay()
-    #print("after")
-    #return render(request, "submission.html")
-
-
 def result(request):
     return render(request, "result.html")

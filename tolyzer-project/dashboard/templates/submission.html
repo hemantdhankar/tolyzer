@@ -15,5 +15,9 @@
             <br><h6>Please wait while we are Analyzing your Network. You will be automatically redirected to result page... </h6></br>
         </div>
     </div>
+    <form class="hidden-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="normal-button" id="js--hidden-button" type="submit" value="Submit">
+    </form>
 </section>
 {% endblock %}

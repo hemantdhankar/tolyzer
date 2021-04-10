@@ -30,6 +30,7 @@ DEBUG = True
 
 INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
+    'background_task',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+BACKGROUND_TASK_RUN_ASYNC = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-CELERY_BROKER_URL = 'amqp://localhost'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

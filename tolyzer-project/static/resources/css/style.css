@@ -161,7 +161,9 @@ input {
     color: black;
     font-weight: bold;
 }
-
+.hidden-form{
+    display: none;
+}
 .submission-box{
     background-color: transparent;
     border-radius: 20px;
