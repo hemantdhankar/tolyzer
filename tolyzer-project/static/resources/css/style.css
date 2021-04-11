@@ -185,6 +185,25 @@ input {
     animation-timing-function: linear; 
 }
 
+.result-section{
+    text-align: center;
+}
+
+.network-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100vh;
+}
+
+.network-frame{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+
 @keyframes line_animation {
     from {
         width: 0%;

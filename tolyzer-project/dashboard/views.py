@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from .functions import *
+from django.shortcuts import render, redirect 
 from .forms import *
 from .tasks import *
 from .models import *
@@ -21,11 +20,14 @@ def home(request):
             task.status = False
             task.save()
         
-        task_id = task.submission_id
-        filename = request.FILES['network'].name
+            task_id = task.submission_id
+            result = Result()
+            result.submission_id = task
+            result.save()
+            filename = request.FILES['network'].name
 
-        process(task_id)
-        
+            process(task_id)
+            
         return redirect('submission/'+str(task_id))        
     else:
         dataToPass['form'] = uploadFile(auto_id=False)
@@ -39,10 +41,11 @@ def submission(request, task_id):
             if(obj.status == False):
                 return render(request,"submission.html")
             else:
-                return redirect(result)
+                return redirect(result, task_id)
         else:
             return render(request, "submission.html")
     
     
-def result(request):
-    return render(request, "result.html")
+def result(request, task_id):
+    print(task_id)
+    return render(request, "result.html", {'task_id':str(task_id)})

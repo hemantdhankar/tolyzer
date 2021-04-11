@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-ohh yeahhhhhhh
+<section class="results-section">
+    <div class="network-diagram">
+        <div class="network-container">
+            <iframe class="network-frame" src="{% static 'results/'%}{{task_id}}graph.html" title="Graph Vizualization"></iframe>
+        </div>
+    </div>
+    <div class="rating">
+
+    </div>
+    <div class="plots">
+
+    </div>
+</section> 
 {% endblock %}

@@ -8,4 +8,5 @@ A tool to analyze the error and attack tolerance of a Network. Users will get a 
 4. Once inside the virtual environment, install all dependencies. (COMMAND: "pip install -r requirements.txt")
 5. Add yourself as a superuser (COMMAND: "django-admin createsuperuser")
 6. Launch the app. (COMMAND: "python manage.py runserver")
-7. Site should be live at "localhost:8000/dashboard/"
+7. Open a new terminal and run django-background-task app (COMMAND: "python manage.py process_tasks")
+8. Site should be live at "localhost:8000/dashboard/"
