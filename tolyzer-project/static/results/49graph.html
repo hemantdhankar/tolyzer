@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000;
+            height: 1000;
+            background-color: #AARRGGBB;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Beak", "label": "Beak", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fish", "label": "Fish", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Grin", "label": "Grin", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Haecksel", "label": "Haecksel", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN9", "label": "SN9", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN96", "label": "SN96", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TR77", "label": "TR77", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Beescratch", "label": "Beescratch", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Jet", "label": "Jet", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Knit", "label": "Knit", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Notch", "label": "Notch", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Number1", "label": "Number1", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Oscar", "label": "Oscar", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN100", "label": "SN100", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN90", "label": "SN90", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Upbang", "label": "Upbang", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Bumper", "label": "Bumper", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Thumper", "label": "Thumper", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Zipfel", "label": "Zipfel", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "CCL", "label": "CCL", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Double", "label": "Double", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Zap", "label": "Zap", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Cross", "label": "Cross", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Trigger", "label": "Trigger", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "DN16", "label": "DN16", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Feather", "label": "Feather", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Gallatin", "label": "Gallatin", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Wave", "label": "Wave", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Web", "label": "Web", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "DN21", "label": "DN21", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "DN63", "label": "DN63", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "PL", "label": "PL", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Kringel", "label": "Kringel", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN4", "label": "SN4", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Topless", "label": "Topless", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Ripplefluke", "label": "Ripplefluke", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Patchback", "label": "Patchback", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Five", "label": "Five", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fork", "label": "Fork", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Scabs", "label": "Scabs", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Hook", "label": "Hook", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "MN83", "label": "MN83", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Shmuddel", "label": "Shmuddel", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN63", "label": "SN63", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Stripes", "label": "Stripes", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TR99", "label": "TR99", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TSN103", "label": "TSN103", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Jonah", "label": "Jonah", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Vau", "label": "Vau", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "MN23", "label": "MN23", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Mus", "label": "Mus", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Quasi", "label": "Quasi", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "MN105", "label": "MN105", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "MN60", "label": "MN60", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SMN5", "label": "SMN5", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Zig", "label": "Zig", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TR88", "label": "TR88", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "SN89", "label": "SN89", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Whitetip", "label": "Whitetip", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TR120", "label": "TR120", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TSN83", "label": "TSN83", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "TR82", "label": "TR82", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "Beak", "to": "Fish", "weight": 1}, {"from": "Beak", "to": "Grin", "weight": 1}, {"from": "Beak", "to": "Haecksel", "weight": 1}, {"from": "Beak", "to": "SN9", "weight": 1}, {"from": "Beak", "to": "SN96", "weight": 1}, {"from": "Beak", "to": "TR77", "weight": 1}, {"from": "Beescratch", "to": "Jet", "weight": 1}, {"from": "Beescratch", "to": "Knit", "weight": 1}, {"from": "Beescratch", "to": "Notch", "weight": 1}, {"from": "Beescratch", "to": "Number1", "weight": 1}, {"from": "Beescratch", "to": "Oscar", "weight": 1}, {"from": "Beescratch", "to": "SN100", "weight": 1}, {"from": "Beescratch", "to": "SN90", "weight": 1}, {"from": "Beescratch", "to": "Upbang", "weight": 1}, {"from": "Bumper", "to": "Fish", "weight": 1}, {"from": "Bumper", "to": "SN96", "weight": 1}, {"from": "Bumper", "to": "Thumper", "weight": 1}, {"from": "Bumper", "to": "Zipfel", "weight": 1}, {"from": "CCL", "to": "Double", "weight": 1}, {"from": "CCL", "to": "Grin", "weight": 1}, {"from": "CCL", "to": "Zap", "weight": 1}, {"from": "Cross", "to": "Trigger", "weight": 1}, {"from": "DN16", "to": "Feather", "weight": 1}, {"from": "DN16", "to": "Gallatin", "weight": 1}, {"from": "DN16", "to": "Wave", "weight": 1}, {"from": "DN16", "to": "Web", "weight": 1}, {"from": "DN21", "to": "Feather", "weight": 1}, {"from": "DN21", "to": "Gallatin", "weight": 1}, {"from": "DN21", "to": "Jet", "weight": 1}, {"from": "DN21", "to": "Upbang", "weight": 1}, {"from": "DN21", "to": "Wave", "weight": 1}, {"from": "DN21", "to": "Web", "weight": 1}, {"from": "DN63", "to": "Knit", "weight": 1}, {"from": "DN63", "to": "Number1", "weight": 1}, {"from": "DN63", "to": "PL", "weight": 1}, {"from": "DN63", "to": "SN9", "weight": 1}, {"from": "DN63", "to": "Upbang", "weight": 1}, {"from": "Double", "to": "Kringel", "weight": 1}, {"from": "Double", "to": "Oscar", "weight": 1}, {"from": "Double", "to": "SN4", "weight": 1}, {"from": "Double", "to": "Topless", "weight": 1}, {"from": "Double", "to": "Zap", "weight": 1}, {"from": "Feather", "to": "Gallatin", "weight": 1}, {"from": "Feather", "to": "Jet", "weight": 1}, {"from": "Feather", "to": "Ripplefluke", "weight": 1}, {"from": "Feather", "to": "SN90", "weight": 1}, {"from": "Feather", "to": "Web", "weight": 1}, {"from": "Fish", "to": "Patchback", "weight": 1}, {"from": "Fish", "to": "SN96", "weight": 1}, {"from": "Fish", "to": "TR77", "weight": 1}, {"from": "Five", "to": "Trigger", "weight": 1}, {"from": "Fork", "to": "Scabs", "weight": 1}, {"from": "Gallatin", "to": "Jet", "weight": 1}, {"from": "Gallatin", "to": "Ripplefluke", "weight": 1}, {"from": "Gallatin", "to": "SN90", "weight": 1}, {"from": "Gallatin", "to": "Upbang", "weight": 1}, {"from": "Gallatin", "to": "Web", "weight": 1}, {"from": "Grin", "to": "Hook", "weight": 1}, {"from": "Grin", "to": "MN83", "weight": 1}, {"from": "Grin", "to": "Scabs", "weight": 1}, {"from": "Grin", "to": "Shmuddel", "weight": 1}, {"from": "Grin", "to": "SN4", "weight": 1}, {"from": "Grin", "to": "SN63", "weight": 1}, {"from": "Grin", "to": "SN9", "weight": 1}, {"from": "Grin", "to": "Stripes", "weight": 1}, {"from": "Grin", "to": "TR99", "weight": 1}, {"from": "Grin", "to": "TSN103", "weight": 1}, {"from": "Haecksel", "to": "Jonah", "weight": 1}, {"from": "Haecksel", "to": "MN83", "weight": 1}, {"from": "Haecksel", "to": "SN9", "weight": 1}, {"from": "Haecksel", "to": "Topless", "weight": 1}, {"from": "Haecksel", "to": "Vau", "weight": 1}, {"from": "Haecksel", "to": "Zap", "weight": 1}, {"from": "Hook", "to": "Kringel", "weight": 1}, {"from": "Hook", "to": "Scabs", "weight": 1}, {"from": "Hook", "to": "SN4", "weight": 1}, {"from": "Hook", "to": "SN63", "weight": 1}, {"from": "Hook", "to": "TR99", "weight": 1}, {"from": "Jet", "to": "MN23", "weight": 1}, {"from": "Jet", "to": "Mus", "weight": 1}, {"from": "Jet", "to": "Number1", "weight": 1}, {"from": "Jet", "to": "Quasi", "weight": 1}, {"from": "Jet", "to": "Web", "weight": 1}, {"from": "Jonah", "to": "Kringel", "weight": 1}, {"from": "Jonah", "to": "MN105", "weight": 1}, {"from": "Jonah", "to": "MN83", "weight": 1}, {"from": "Jonah", "to": "Patchback", "weight": 1}, {"from": "Jonah", "to": "Topless", "weight": 1}, {"from": "Jonah", "to": "Trigger", "weight": 1}, {"from": "Knit", "to": "PL", "weight": 1}, {"from": "Knit", "to": "Upbang", "weight": 1}, {"from": "Kringel", "to": "Oscar", "weight": 1}, {"from": "Kringel", "to": "SN100", "weight": 1}, {"from": "Kringel", "to": "SN63", "weight": 1}, {"from": "Kringel", "to": "Thumper", "weight": 1}, {"from": "Kringel", "to": "TR77", "weight": 1}, {"from": "Kringel", "to": "TR99", "weight": 1}, {"from": "MN105", "to": "Patchback", "weight": 1}, {"from": "MN105", "to": "Scabs", "weight": 1}, {"from": "MN105", "to": "SN4", "weight": 1}, {"from": "MN105", "to": "Topless", "weight": 1}, {"from": "MN105", "to": "Trigger", "weight": 1}, {"from": "MN60", "to": "SN100", "weight": 1}, {"from": "MN60", "to": "Topless", "weight": 1}, {"from": "MN60", "to": "Trigger", "weight": 1}, {"from": "MN83", "to": "Patchback", "weight": 1}, {"from": "MN83", "to": "Topless", "weight": 1}, {"from": "MN83", "to": "Trigger", "weight": 1}, {"from": "Mus", "to": "Notch", "weight": 1}, {"from": "Mus", "to": "Number1", "weight": 1}, {"from": "Notch", "to": "Number1", "weight": 1}, {"from": "Oscar", "to": "PL", "weight": 1}, {"from": "Oscar", "to": "TR77", "weight": 1}, {"from": "Patchback", "to": "SMN5", "weight": 1}, {"from": "Patchback", "to": "Stripes", "weight": 1}, {"from": "Patchback", "to": "Topless", "weight": 1}, {"from": "Patchback", "to": "Trigger", "weight": 1}, {"from": "Patchback", "to": "TSN103", "weight": 1}, {"from": "PL", "to": "SN96", "weight": 1}, {"from": "PL", "to": "TR77", "weight": 1}, {"from": "Ripplefluke", "to": "Zig", "weight": 1}, {"from": "Scabs", "to": "Shmuddel", "weight": 1}, {"from": "Scabs", "to": "SN4", "weight": 1}, {"from": "Scabs", "to": "SN63", "weight": 1}, {"from": "Scabs", "to": "SN9", "weight": 1}, {"from": "Scabs", "to": "Stripes", "weight": 1}, {"from": "Scabs", "to": "TR99", "weight": 1}, {"from": "Shmuddel", "to": "SN4", "weight": 1}, {"from": "Shmuddel", "to": "Thumper", "weight": 1}, {"from": "Shmuddel", "to": "TR88", "weight": 1}, {"from": "SN100", "to": "SN4", "weight": 1}, {"from": "SN100", "to": "SN89", "weight": 1}, {"from": "SN100", "to": "SN9", "weight": 1}, {"from": "SN100", "to": "Zap", "weight": 1}, {"from": "SN4", "to": "SN9", "weight": 1}, {"from": "SN4", "to": "Stripes", "weight": 1}, {"from": "SN4", "to": "Topless", "weight": 1}, {"from": "SN4", "to": "Zipfel", "weight": 1}, {"from": "SN63", "to": "Stripes", "weight": 1}, {"from": "SN63", "to": "Thumper", "weight": 1}, {"from": "SN63", "to": "TSN103", "weight": 1}, {"from": "SN63", "to": "Whitetip", "weight": 1}, {"from": "SN89", "to": "Web", "weight": 1}, {"from": "SN9", "to": "TSN103", "weight": 1}, {"from": "SN90", "to": "Upbang", "weight": 1}, {"from": "SN90", "to": "Web", "weight": 1}, {"from": "SN96", "to": "TR77", "weight": 1}, {"from": "SN96", "to": "TR99", "weight": 1}, {"from": "Stripes", "to": "TR120", "weight": 1}, {"from": "Stripes", "to": "TSN83", "weight": 1}, {"from": "Topless", "to": "TR99", "weight": 1}, {"from": "Topless", "to": "Trigger", "weight": 1}, {"from": "Topless", "to": "Zap", "weight": 1}, {"from": "TR120", "to": "TR88", "weight": 1}, {"from": "TR82", "to": "Web", "weight": 1}, {"from": "TR99", "to": "Trigger", "weight": 1}, {"from": "Trigger", "to": "Vau", "weight": 1}, {"from": "TSN83", "to": "Zipfel", "weight": 1}, {"from": "Upbang", "to": "Web", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 250
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
