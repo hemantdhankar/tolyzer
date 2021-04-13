@@ -3,6 +3,7 @@ from .functions import *
 from background_task import background
 import time
 import os
+import copy
 from django.core.files.base import ContentFile, File
 @background(schedule=1)
 def process(task_id):
@@ -20,7 +21,10 @@ def process(task_id):
         results.graph1.save(os.path.basename(f.name),File(f))
         results.save()
     
-
+    
+    get_plot_failure(G.copy() ,5, task_id)
+    
+    get_plot_attack(G.copy(), 5, task_id)
     
     
     

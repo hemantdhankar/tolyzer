@@ -1,17 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<section class="results-section">
-    <div class="network-diagram">
-        <div class="network-container">
-            <iframe class="network-frame" src="{% static 'results/'%}{{task_id}}graph.html" title="Graph Vizualization"></iframe>
+<section class="results-graph-section">
+    <h1>Network Information & Vizualization</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="network-info">
+                <div class="submission-container">
+                    <div class="submission-box">
+                        <h5 class="mr-auto ml-auto" style="color: black;">Network Properties</h5>
+                        <b>Nodes:</b>
+                        <br>
+                        <b>Edges:</b>
+                        <br>
+                        <b>Diameter:</b>
+                        <br>
+                        <b>Characteristic Path Length:</b>
+                        <br>
+                        <b>Centerality:</b>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="network-diagram">
+                <div class="network-container">
+                    <iframe class="network-frame" src="{% static 'results/'%}{{task_id}}graph.html" title="Graph Vizualization"></iframe>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="rating">
+</section>
 
-    </div>
-    <div class="plots">
-
+<section class="results-plot-section">
+    <br>
+    <h1>Error & Attack Tolerance Analysis</h1>
+    <br><br>
+    <div class="plots row mx-auto">
+        <div class="col-5 faliure">
+            <div class="row col-heading"> Failure Analysis</div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}cpl_f.png">
+            </div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}lcs_f.png">
+            </div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}ics_f.png">
+            </div>
+        </div>
+        <div class="col-1 mx-auto"></div>
+        <div class="col-5 attack mx-auto">
+            <div class="row col-heading"> Attack Analysis</div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}cpl_a.png">        
+            </div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}lcs_a.png">
+            </div>
+            <div class="row">
+                <img src="{% static 'results/'%}{{task_id}}ics_a.png">
+            </div>
+        </div>
     </div>
 </section> 
 {% endblock %}
+
