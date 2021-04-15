@@ -12,6 +12,7 @@ import matplotlib.path as mpath
 import operator
 from operator import itemgetter
 import itertools
+import seaborn as sns
 
 def test():
     print("Test Successfull")
@@ -52,11 +53,10 @@ def get_holo_plot(G, task_id):
 
 
 def get_pyvis_plot(G, task_id):
-    g=Network(height=700,width=900,notebook=False,bgcolor="#AARRGGBB",font_color='white')
+    g=Network(height=800,width=900,notebook=False,bgcolor="#AARRGGBB",font_color='white')
     g.barnes_hut()
     g.from_nx(G)
     g.inherit_edge_colors(True)
-    g.set_options(''' var options={"edges":{"width":10}} ''')
     g.save_graph("./static/results/"+str(task_id)+"graph.html")
     
     
@@ -218,15 +218,15 @@ def get_plot_failure(G,percentage_of_nodes_to_failure, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Characteristic Path Length")
         ax.plot(plt_x,plt_y_pl, '#10febd', marker='o', markersize=10,linewidth=2)
@@ -234,15 +234,15 @@ def get_plot_failure(G,percentage_of_nodes_to_failure, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Relative Size of Largest Cluster")
         ax.plot(plt_x,plt_y_lc, '#10febd', marker='o', markersize=10,linewidth=2)
@@ -250,15 +250,15 @@ def get_plot_failure(G,percentage_of_nodes_to_failure, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Average Size of Isolated Cluster")
         ax.plot(plt_x,plt_y_aic, '#10febd', marker='o', markersize=10,linewidth=2)
@@ -277,15 +277,15 @@ def get_plot_attack(G,percentage_of_nodes_to_attack, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Characteristic Path Length")
         ax.plot(plt_x,plt_y_pl, '#10febd', marker='o', markersize=10,linewidth=2)
@@ -293,15 +293,15 @@ def get_plot_attack(G,percentage_of_nodes_to_attack, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Relative Size of Largest Cluster")
         ax.plot(plt_x,plt_y_lc, '#10febd', marker='o', markersize=10,linewidth=2)
@@ -309,18 +309,163 @@ def get_plot_attack(G,percentage_of_nodes_to_attack, task_id):
     with plt.style.context('classic'):
         plt.figure(figsize=(8,8))
         ax=plt.axes()
-        ax.spines['bottom'].set_color('#1d92fd')
-        ax.spines['top'].set_color('#1d92fd') 
-        ax.spines['right'].set_color('#1d92fd')
-        ax.spines['left'].set_color('#1d92fd')
-        ax.tick_params(axis='x', colors='#1d92fd')
-        ax.tick_params(axis='y', colors='#1d92fd') 
-        ax.yaxis.label.set_color('#1d92fd')
-        ax.xaxis.label.set_color('#1d92fd')
-        ax.title.set_color('#1d92fd')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white') 
+        ax.yaxis.label.set_color('white')
+        ax.xaxis.label.set_color('white')
+        ax.title.set_color('white')
         ax.set_xlabel("Fraction of Nodes Deleted")
         ax.set_ylabel("Average Size of Isolated Cluster")
         ax.plot(plt_x,plt_y_aic, '#10febd', marker='o', markersize=10,linewidth=2)
         plt.savefig("./static/results/" + str(task_id)+"ics_a.png", transparent=True)
 
 
+def general_properties(G):
+    d={}
+    d["Nodes"]=round(G.number_of_nodes(), 3)
+    d["Edges"]=round(G.number_of_edges(), 3)
+    d["Diameter"]=round(nx.diameter(G), 3)
+    d["cpl"]=round(nx.average_shortest_path_length(G), 3)
+    d["ad"]=round(d["Edges"]/d["Nodes"], 3)
+    d["density"]=round(nx.density(G), 3)
+    return d
+
+
+def top_5_crucial_nodes(G):
+    bc=nx.betweenness_centrality(G)
+    c_bc=sorted(bc, key=bc.get, reverse=True)[:5]
+    d=list(G.degree())
+    d.sort(key=lambda tup:tup[1],reverse=True)
+    c_d=[]
+    for i in range(5):
+        c_d.append(d[i][0])
+    return c_bc,c_d
+
+
+def score_attack(G):
+    initial_no_of_nodes=G.number_of_nodes()
+    intial_apl=nx.average_shortest_path_length(G)
+    x=G.degree()
+    x=dict(x)
+    G_copy=G.copy()
+    deleted_nodes=0
+    while(True):
+        print(deleted_nodes)
+        if(G_copy.number_of_nodes()==0):
+            print("No Isolated Clusters Detected")
+            break
+        else:
+            node_to_delete=max(x.items(), key=operator.itemgetter(1))[0]
+            for ne in list(G_copy.neighbors(node_to_delete)):
+                x[ne]-=1
+            del x[node_to_delete]
+            deleted_nodes+=1
+            G_copy.remove_node(node_to_delete)
+            if(nx.is_connected(G_copy)):
+                G=G_copy.copy()
+            else:
+                final_apl=nx.average_shortest_path_length(G)
+                final_no_of_nodes=G_copy.number_of_nodes()
+                degree_dist=dict(G_copy.degree())
+                break
+    return degree_dist,initial_no_of_nodes,final_no_of_nodes,intial_apl,final_apl
+
+
+def score_failure(G):
+    initial_no_of_nodes=G.number_of_nodes()
+    intial_apl=nx.average_shortest_path_length(G)
+    nodes=list(G.nodes)
+    G_copy=G.copy()
+    deleted_nodes=0
+    while(True):
+        print(deleted_nodes)
+        if(G_copy.number_of_nodes()==0):
+            print("No Isolated Clusters Detected")
+            break
+        else:
+            node_to_delete=random.choice(nodes)
+            nodes.remove(node_to_delete)
+            G_copy.remove_node(node_to_delete)
+            deleted_nodes+=1
+            if(nx.is_connected(G_copy)):
+                G=G_copy.copy()
+            else:
+                final_apl=nx.average_shortest_path_length(G)
+                final_no_of_nodes=G_copy.number_of_nodes()
+                degree_dist=dict(G_copy.degree())
+                break
+    return degree_dist,initial_no_of_nodes,final_no_of_nodes,intial_apl,final_apl
+
+
+def plot_histo(G, task_id):
+    dda,inona,fnona,iapla,fapla=score_attack(G.copy())
+    ddf,inonf,fnonf,iaplf,faplf=score_failure(G.copy())
+    ddn=degree_dist=dict(G.degree())
+    l1=list(dda.values())
+    l2=list(ddf.values())
+    l3=list(ddn.values())
+    l1=pd.DataFrame(l1)
+    l1.loc[:,0]
+    l2=pd.DataFrame(l2)
+    l2.loc[:,0]
+    l3=pd.DataFrame(l3)
+    l3.loc[:,0]
+    plt.figure(figsize=(15,8), dpi= 120)
+    ax=plt.axes()
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_color('white') 
+    ax.spines['right'].set_color('white')
+    ax.spines['left'].set_color('white')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white') 
+    ax.yaxis.label.set_color('white')
+    ax.xaxis.label.set_color('white')
+    ax.title.set_color('white')
+    sns.kdeplot(l1.loc[:,0], shade=True, color="r", label="Degree Distribution - Attack", alpha=.5)
+    sns.kdeplot(l2.loc[:,0], shade=True, color="#7270fe", label="Degree Distribution - Failure", alpha=.5)
+    sns.kdeplot(l3.loc[:,0], shade=True, color="#10febd", label="Degree Distribution - Normal", alpha=.5)
+
+
+    # Decoration
+    plt.title('Degree Distribution - Attack vs Failure vs Normal')
+    plt.xlabel("Degree")
+    plt.ylabel("P(k)")
+    plt.legend()
+    plt.savefig("./static/results/" + str(task_id)+"multi_histo.png",transparent=True)
+
+
+def get_failure_score_tol(G):
+    dd,inon,fnon,iapl,fapl=score_failure(G)
+    non_score=((inon-fnon)/inon)*100
+    print("F",non_score)
+    return round(non_score,1)
+
+def get_attack_score_tol(G):
+    dd,inon,fnon,iapl,fapl=score_attack(G)
+    non_score=((inon-fnon)/inon)*100
+    print("A",non_score)
+    return round(non_score,1)
+
+
+def recommend_graph(G,task_id, ne_add_seed=5):
+    bc,d=top_5_crucial_nodes(G)
+    cru_nodes=bc+d
+    cru_nodes=list(set(cru_nodes))
+    nodes=list(G.nodes())
+    for i in range(len(cru_nodes)):
+        backup_node=str(cru_nodes[i])+"_back"
+        G.add_node(backup_node)
+        for ne in list(G.neighbors(cru_nodes[i])):
+            G.add_edge(backup_node,ne)
+        for ne in range(ne_add_seed):
+            for i in range(10):
+                node_to_add=random.choice(nodes)
+                if(not G.has_edge(backup_node,node_to_add)):
+                    break
+            G.add_edge(backup_node,node_to_add)
+    nx.write_gml(G, "./static/results/" + str(task_id)+"recommend.gml")
+    return

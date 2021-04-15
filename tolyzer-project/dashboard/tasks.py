@@ -5,6 +5,9 @@ import time
 import os
 import copy
 from django.core.files.base import ContentFile, File
+import json
+
+
 @background(schedule=1)
 def process(task_id):
     print("Task ", task_id, " Received.")
@@ -13,12 +16,30 @@ def process(task_id):
     G = read_network(obj.uploaded_file)
     
     print(G)
-    print(G.nodes)
+
+    info = general_properties(G)
+    results.nodes = info['Nodes']
+    results.edges = info['Edges']
+    results.average_degree = info['ad']
+    results.cpl = info['cpl']
+    results.diameter = info['Diameter']
+    results.density = info['density']
     
-    get_pyvis_plot(G, task_id)
+    c_bc, c_d = top_5_crucial_nodes(G.copy())
+    results.top_5_bc_nodes = json.dumps(c_bc)
+    results.top_5_degree_nodes = json.dumps(c_d)
+
+    results.failure_tolerance = get_failure_score_tol(G.copy())
+    results.attack_tolerance = get_attack_score_tol(G.copy())
+    results.save()
     
-    with open('./static/results/'+str(task_id)+'graph.html') as f:
-        results.graph1.save(os.path.basename(f.name),File(f))
+    plot_histo(G.copy(), task_id)
+    get_pyvis_plot(G.copy(), task_id)
+    
+    recommend_graph(G.copy(),task_id,5)
+    
+    with open("./static/results/" + str(task_id)+"recommend.gml") as f:
+        results.recommended_file.save(os.path.basename(f.name),File(f))
         results.save()
     
     

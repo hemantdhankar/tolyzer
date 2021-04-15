@@ -229,6 +229,7 @@ iframe{
 }
 
 .plots{
+    padding-top: 50px;
     width: 90%;
     text-align: center;
 }
@@ -239,17 +240,56 @@ iframe{
     border-bottom-left-radius: 20px;
     width: 100%;
     padding: 10px;
-    background-color: var(--theme-Color-2);
+    background-color: var(--theme-Color-3);
 }
 
 
 
+.crucial-nodes-section{
+    padding: 50px;
+    text-align: center;
+}
 
+.node{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    background-color: var(--theme-Color-3);
+    border-radius: 20px;
+    margin-right: 20px;
+}
 
+.node-container{
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid var(--theme-Color-2);
+}
 
+.circle{
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: var(--theme-Color-2);
+}
 
+.network-tolerance{
+    padding: 30px;
+}
 
+.recommendation-section{
+    padding: 50px;
+    height: 100vh;
+    text-align: center;
+}
 
+.text-container{
+    padding: 50px;
+}
 
 
 

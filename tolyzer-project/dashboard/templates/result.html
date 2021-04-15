@@ -2,24 +2,43 @@
 {% block content %}
 {% load static %}
 <section class="results-graph-section">
-    <h1>Network Information & Vizualization</h1>
+    <div style="padding: 50px;">
+        <h3 style="font-weight: 700;">Network Information & Vizualization</h3>
+    </div>
     <div class="row">
         <div class="col-4">
-            <div class="network-info">
-                <div class="submission-container">
-                    <div class="submission-box">
-                        <h5 class="mr-auto ml-auto" style="color: black;">Network Properties</h5>
-                        <b>Nodes:</b>
+            <div class="network-info" style="margin-bottom: 50px;">
+                <div class="submission-container" style="text-align: left;padding-top: 30px;padding-bottom: 30px;">
+                        <h5 class="mr-auto ml-auto" style="color: black;font-size: 24px;font-weight: 700;">Network Properties</h5>
+                        <hr style="border: 2px solid black;">
+                        <b>Total Nodes:</b><b style="float: right;color: black;">{{ nodes }} </b>
                         <br>
-                        <b>Edges:</b>
+                        <b>Total Edges:</b><b style="float: right;color: black">{{ edges }}</b>
                         <br>
-                        <b>Diameter:</b>
+                        <b>Diameter:</b><b style="float: right;color: black">{{ diameter }}</b>
                         <br>
-                        <b>Characteristic Path Length:</b>
+                        <b>Density:</b><b style="float: right;color: black">{{ density }}</b>
                         <br>
-                        <b>Centerality:</b>
+                        <b>Average Degree:</b><b style="float: right;color: black">{{ average_degree }}</b>
                         <br>
-                    </div>
+                        <b>Characteristic Path Length:</b><b style="float: right;color: black">{{ cpl }}</b>
+                        <br>
+                </div>
+            </div>
+            <div class="mx-auto" style="width: 80%;">
+                <h5 style="padding: 10px; font-size: 24px;font-weight: 700; border-radius: 20px;border:2px solid #1d92fd;">Tolerance</h5>
+            </div>
+            <p>How much node failure or atacks can be tolerated?</p>
+            <div class="network-tolerance">
+                <div class="circle">
+                    <h5 style="padding-top: 10px;font-weight: bolder;font-size: x-large;">Attack</h5>
+                    <hr style="margin-top: 5px; margin-bottom: 30px;border: 2px solid black;">
+                    <h1 style="margin-top: 20px; color: black; font-weight: 700; font-size: 60px;padding-top: 30px;display: inline;padding-right: 5px;">{{ attack_tolerance }}<h5 style="display: inline; color: black;font-size: 30px;">%</h5></h1>
+                </div>
+                <div class="circle">
+                    <h5 style="padding-top: 10px; font-weight: bolder;font-size: x-large;">Failure</h5>
+                    <hr style="margin-top: 5px;margin-bottom: 30px; border: 2px solid black;">
+                    <h1 style="color: black; font-weight: 700;font-size: 60px;padding-top: 30px;display: inline;padding-right: 5px;">{{ failure_tolerance }}<h5 style="display: inline; color: black;font-size: 30px;">%</h5></h1>
                 </div>
             </div>
         </div>
@@ -32,14 +51,41 @@
         </div>
     </div>
 </section>
-
+<section class="crucial-nodes-section">
+    <div style="padding: 50px;">
+        <h3 style="font-weight: 700;">Most Crucial Nodes</h3>
+    </div>
+    <div class="row mx-auto" style="width: 90%;">
+        <div class="col-4 mx-auto node-container">
+            <h5>Based on Degree</h5>
+            <br>
+            {% for i in top_5_degree_nodes %}
+            <div class="node" style="margin-top: 20px;">
+                {{ i }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-4 mx-auto node-container">
+            <h5>Based on Betweenness Centrality</h5>
+            <br>
+            {% for i in top_5_bc_nodes %}
+            <div class="node" style="margin-top: 20px;">
+                {{ i }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 <section class="results-plot-section">
-    <br>
-    <h1>Error & Attack Tolerance Analysis</h1>
-    <br><br>
+    <div style="padding-top: 50px;padding-bottom: 0;">
+        <h3 style="font-weight: 700;">Error & Attack Tolerance Analysis</h3>
+    </div>
+    <div class="distribution">
+        <img src="{% static 'results/'%}{{task_id}}multi_histo.png">
+    </div>
     <div class="plots row mx-auto">
         <div class="col-5 faliure">
-            <div class="row col-heading"> Failure Analysis</div>
+            <div class="row col-heading"><h5>Failure Analysis</h5></div>
             <div class="row">
                 <img src="{% static 'results/'%}{{task_id}}cpl_f.png">
             </div>
@@ -52,7 +98,7 @@
         </div>
         <div class="col-1 mx-auto"></div>
         <div class="col-5 attack mx-auto">
-            <div class="row col-heading"> Attack Analysis</div>
+            <div class="row col-heading"><h5>Attack Analysis</h5></div>
             <div class="row">
                 <img src="{% static 'results/'%}{{task_id}}cpl_a.png">        
             </div>
@@ -65,5 +111,23 @@
         </div>
     </div>
 </section> 
+<section class="recommendation-section">
+    <div class="text-container">
+        <h3 style="font-weight: 700;">Recommended Optimized Network</h3>
+        <br>
+        <br>
+        <br>
+        <p>We already know the crucial nodes based on their degree and Betweenness Centrality. 
+            Any damage to these nodes either by error or attack will result in damage to the whole network.
+            To save ourselves from such situations, we can take backups of these nodes. This will increase the 
+            tolerance of the network. <br>You can download the updated network file from below.</p>
+    </div>
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input class="normal-button" style="width: 400px;" type="submit" value="Download Recommended Network" name="recommend">
+        </form>
+    </div>
+</section>
 {% endblock %}
 
